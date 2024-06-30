@@ -62,9 +62,8 @@ This data sought to collect the coach's name, team, season, first year with the 
 
 The data was manually collected from Wikipedia.
 
-|A         |B                       |C  |D  |E   |F  |G  |H                 |
-|----------|------------------------|---|---|----|---|---|------------------|
 |coach_name|recent_team             |season|firstyearwithteam|years_coached|wins|loses|ties              |
+|----------|------------------------|---|---|----|---|---|------------------|
 |VinceTobin|ARI                     |1998|0  |2   |9  |7  |0                 |
 |VinceTobin|ARI                     |1999|0  |3   |6  |10 |0                 |
 |VinceTobin|ARI                     |2000|0  |4   |3  |13 |0                 |
