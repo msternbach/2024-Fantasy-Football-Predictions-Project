@@ -1,7 +1,7 @@
 # 2024-Fantasy-Football-Predictions-Project
 
 ### Tableau Dashboard:
-![Dashboard picture](Dashboard.png)
+![Dashboard picture](FFball Readme Files/Dashboard.png)
 [Dashboard Link](https://public.tableau.com/app/profile/michael.sternbach/viz/FantasyFootballVisualization/Dashboard1)
 
 ## Summary
@@ -93,7 +93,7 @@ The data was manually collected from Wikipedia.
 - Handling undrafted players
 - Handling injury data
 - Correlation analysis:
-  ![wide receiver correlation heatmap](download.png)
+  ![wide receiver correlation heatmap](FFball Readme Files/correlation.png)
 
 ## Analysis
 *Conducted by: Michael Sternbach and Alex Szczepanski*
@@ -107,9 +107,9 @@ The data was manually collected from Wikipedia.
 
 Each model was run for the rookie and veteran players of each position group. The models returned the feature importance, RMSE, R squared, a bar graph of the players with the top 10 projected fantasy points vs. their actual performance, and a scatter plot of the total predicted vs. actual performance. They were all tested on the 2023 season.
 
-![wide receiver random forest bar graph](bargraph.png)
+![wide receiver random forest bar graph](FFball Readme Files/bargraph.png)
 
-![wide receiver random forest scatterplot](scatterplot.png)
+![wide receiver random forest scatterplot](FFball Readme Files/scatterplot.png)
 
 ## Model Selection
 *Conducted by: Michael Sternbach*
