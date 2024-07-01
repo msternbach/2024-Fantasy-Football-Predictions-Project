@@ -8,12 +8,15 @@ https://public.tableau.com/app/profile/michael.sternbach/viz/FantasyFootballVisu
 
 ## Summary
 
-The goal of this project was to build a machining learning model that could predict a player's performance better than "experts" on sites like ESPN and NFL.com. It started as a group project for our data science class, and then something that I and some of my other
-groupmates kept working on after graduation. After trying out many different variables and techniques I was able to build an optimal model for each position group given our availble data. The models for rookie performance were a bit unreliable as there is no statistical data that could be used, but they were still overall pretty good at predicting who would be the top 3/5 performing rookies per position. However the veteran models all had RMSE and R squared values ranging from 55 - 75 and 0.5 - 0.63 respectively. They were also reliable in predicting which players would finish in the top 20 with that accuracy ranging from 60% - 80%, which is very impressive considering many of the incorrect predictions were due to unforseen injuries. The predictions for the 2024 season are by no means perfect, but it does give you a good estimate of around where a player will perform, and can absolutely be used as a valuable tool when it comes to drafting a fantasy team.
+The goal of this project was to build a machine learning model that could predict a player's performance better than "experts" on sites like ESPN and NFL.com. It started as a group project for our data science class, and then became something that I and some of my other groupmates continued working on after graduation.
+
+After trying out many different variables and techniques, we built optimal models for each position group given our available data. The models for rookie performance were a bit unreliable due to the lack of statistical data, but they were still overall pretty good at predicting who would be the top 3/5 performing rookies per position. However, the veteran models all had RMSE and R-squared values ranging from 55-75 and 0.5-0.63, respectively. They were also reliable in predicting which players would finish in the top 20, with accuracy ranging from 60%-80%, which is impressive considering many incorrect predictions were due to unforeseen injuries.
+
+The predictions for the 2024 season are by no means perfect, but they provide a good estimate of a player's performance and can be a valuable tool for drafting a fantasy team.
 
 ## Data collection
 ### Statistical Data
-*Collected by: Michael Sternbach*
+*Collected by: Michael Sternbach and Conor Hughes*
 
 This data contains all the statistical information we used. It was collected from [nfl verse](https://github.com/nflverse/nflverse-data/releases/tag/player_stats)
 
@@ -80,7 +83,7 @@ The data was manually collected from Wikipedia.
 |DaveMcGinnis|ARI                     |2002|0  |1   |5  |11 |0                 |
 
 ## Data Preprocessing
-*Conducted by: Michael Sternbach*
+*Conducted by: Michael Sternbachand and Alex Szczepanski[^1]*
 - Creating new variables:
   - New team
   - Quarterback has over 4000 passing yards
@@ -91,4 +94,53 @@ The data was manually collected from Wikipedia.
 - Binning height, weight, and draft round
 - Handling undrafted players
 - Handling injury data
-- Correlation analysis
+- Correlation analysis:
+  ![wide receiver correlation heatmap](download.png)
+
+## Analysis
+*Conducted by: Michael Sternbach and Alex Szczepanski*
+
+### Models:
+- Lasso Regression
+- Random Forest
+- XGBoost
+- Gradient Boosting
+- Voting Regressor
+
+Each model was run for the rookie and veteran players of each position group. The models returned the feature importance, RMSE, R squared, a bar graph of the players with the top 10 projected fantasy points vs. their actual performance, and a scatter plot of the total predicted vs. actual performance. They were all tested on the 2023 season.
+
+![wide receiver random forest bar graph](bar graph.png)
+
+![wide receiver random forest scatterplot](scatterplot.png)
+
+## Model Selection
+*Conducted by: Michael Sternbach*
+
+For each position group, each of the 5 above models was run for each of the previous 5 NFL seasons (2019 - 2023). For every time a model ran the optimal parameters, RMSE, R squared, number of players correctly guessed in the top 10 (top 3 or 5 for rookies) and number of players correctly guessed in the top 20 were recorded to a dataframe. The optimal model was then selected based on which one performed best on average. The chart below shows the model results for veteran wide receivers. 
+
+| Model         | RMSE Mean  | RMSE Median | RMSE Std   | R2 Mean   | R2 Median | R2 Std    | Top 10 Accuracy Mean | Top 10 Accuracy Median | Top 10 Accuracy Std | Top 20 Accuracy Mean | Top 20 Accuracy Median | Top 20 Accuracy Std |
+|---------------|------------|-------------|------------|-----------|-----------|-----------|-----------------------|------------------------|---------------------|-----------------------|------------------------|---------------------|
+| Voting        | 57.030268  | 56.969201   | 1.819989   | 0.570139  | 0.567442  | 0.048914  | 0.52                  | 0.5                    | 0.130384            | 0.60                  | 0.6                    | 0.050000            |
+| Random Forest | 57.590684  | 57.117570   | 1.792370   | 0.561624  | 0.565186  | 0.049530  | 0.50                  | 0.4                    | 0.141421            | 0.59                  | 0.6                    | 0.065192            |
+| GB            | 57.775137  | 57.384449   | 2.598248   | 0.558021  | 0.561113  | 0.062149  | 0.50                  | 0.5                    | 0.158114            | 0.58                  | 0.6                    | 0.103682            |
+| XGB           | 57.908113  | 57.423363   | 1.996870   | 0.556804  | 0.560518  | 0.051009  | 0.50                  | 0.5                    | 0.122474            | 0.59                  | 0.6                    | 0.065192            |
+| Lasso         | 59.537655  | 60.114130   | 1.554259   | 0.532275  | 0.542096  | 0.042540  | 0.50                  | 0.5                    | 0.122474            | 0.59                  | 0.6                    | 0.065192            |
+
+## Libraries Used
+
+- pandas
+- numpy
+- matplotlib
+- seaborn
+- sklearn
+- xgboost
+- statsmodels.api
+- scipy
+- statistics
+- math
+- itertools
+- warnings
+
+
+
+[^1]: Alex built a logistic regression model for injury probability that ended up not being used
