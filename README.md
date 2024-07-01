@@ -1,7 +1,7 @@
 # 2024-Fantasy-Football-Predictions-Project
 
 ### Tableau Dashboard:
-![Dashboard picture](FFball Readme Files/Dashboard.png)
+![Dashboard picture](![Dashboard picture](FFball%20Readme%20Files/Dashboard.png)
 [Dashboard Link](https://public.tableau.com/app/profile/michael.sternbach/viz/FantasyFootballVisualization/Dashboard1)
 
 ## Summary
